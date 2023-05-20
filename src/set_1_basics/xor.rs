@@ -2,7 +2,7 @@ use hex::{decode, encode};
 pub fn xor(a: &str, b: &str) -> String {
     let a_bytes = decode(a).unwrap();
     let b_bytes = decode(b).unwrap();
-    println!("{a_bytes:?}");
+
     let xor_bytes: Vec<u8> = a_bytes
         .iter()
         .zip(b_bytes.iter())
@@ -12,7 +12,7 @@ pub fn xor(a: &str, b: &str) -> String {
 }
 
 #[cfg(test)]
-mod tests_convert_hex_to_base64 {
+mod tests_xor {
     use super::*;
     #[test]
     fn test_case_1() {
