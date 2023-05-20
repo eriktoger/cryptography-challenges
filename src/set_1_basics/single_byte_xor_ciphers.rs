@@ -1,4 +1,4 @@
-pub fn single_byte_xor_chipers(input: &str) -> String {
+pub fn single_byte_xor_ciphers(input: &str) -> String {
     let bytes: Vec<u8> = input
         .chars()
         .collect::<Vec<_>>()
@@ -28,14 +28,14 @@ pub fn single_byte_xor_chipers(input: &str) -> String {
 }
 
 #[cfg(test)]
-mod tests_single_byte_xor_chipers {
+mod tests_single_byte_xor_ciphers {
     use super::*;
     #[test]
     fn test_case_1() {
         let input = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736";
         assert_eq!(
-            single_byte_xor_chipers(input),
-            "X-27-Cooking MC's like a pound of bacon"
+            single_byte_xor_ciphers(input),
+            "X-33-Cooking MC's like a pound of bacon"
         );
     }
 }
