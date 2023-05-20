@@ -9,9 +9,14 @@ pub fn single_byte_xor_chipers(input: &str) -> String {
     let mut max_count = 0;
     let mut best_char = '-';
     let mut best_match = "".to_string();
+
     for c in 0..255 {
         let xor_bytes: Vec<u8> = bytes.iter().map(|b| (b ^ c)).collect();
-        let count = xor_bytes.iter().filter(|u| **u > 64 && **u < 123).count();
+        let count = xor_bytes
+            .iter()
+            .filter(|u| (**u > 64 && **u < 123) || **u == 32)
+            .count();
+
         if count > max_count {
             max_count = count;
             best_char = c as char;
@@ -19,7 +24,7 @@ pub fn single_byte_xor_chipers(input: &str) -> String {
         }
     }
 
-    format!("{best_char} - {best_match}")
+    format!("{best_char}-{max_count}-{best_match}")
 }
 
 #[cfg(test)]
@@ -30,7 +35,7 @@ mod tests_single_byte_xor_chipers {
         let input = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736";
         assert_eq!(
             single_byte_xor_chipers(input),
-            "X - Cooking MC's like a pound of bacon"
+            "X-27-Cooking MC's like a pound of bacon"
         );
     }
 }
