@@ -6,3 +6,5 @@ pub mod single_byte_xor_cihper;
 pub use single_byte_xor_cihper::*;
 pub mod detect_single_character_xor;
 pub use detect_single_character_xor::*;
+pub mod implement_repeating_key_xor;
+pub use implement_repeating_key_xor::*;
