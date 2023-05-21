@@ -1,4 +1,6 @@
-use super::{base64_to_decimal, find_hamming_distance};
+use crate::set_1_basics::base64_to_decimal;
+
+use super::find_hamming_distance;
 
 pub fn find_keysize(first_line: &str) -> usize {
     let mut smallest_distance = usize::MAX;
@@ -26,12 +28,13 @@ pub fn find_keysize(first_line: &str) -> usize {
 
 #[cfg(test)]
 mod tests_findkeysize {
+    use crate::set_1_basics::get_lines;
+
     use super::find_keysize;
-    use crate::set_1_basics::break_repeating_key_xor::get_lines;
 
     #[test]
     fn test_case_1() {
-        let all_lines = get_lines();
+        let all_lines = get_lines("src/set_1_basics/6.txt");
         let keysize = find_keysize(&all_lines);
         assert_eq!(keysize, 29);
     }

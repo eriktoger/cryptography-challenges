@@ -1,7 +1,8 @@
-use super::{decrypt_text, get_cipher, get_lines};
+use super::{decrypt_text, get_cipher};
+use crate::set_1_basics::get_lines;
 
 pub fn break_repeating_key_xor() -> String {
-    let all_lines = get_lines();
+    let all_lines = get_lines("src/set_1_basics/6.txt");
     let cipher = get_cipher(&all_lines);
     decrypt_text(&all_lines, cipher)
 }

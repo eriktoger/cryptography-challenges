@@ -1,7 +1,3 @@
-pub mod base64_to_decimal;
-pub use base64_to_decimal::base64_to_decimal;
-pub mod get_lines;
-pub use get_lines::get_lines;
 pub mod break_repeating_key_xor;
 pub mod decrypt_text;
 pub use decrypt_text::decrypt_text;

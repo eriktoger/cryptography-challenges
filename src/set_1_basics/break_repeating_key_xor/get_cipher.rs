@@ -1,4 +1,5 @@
-use super::{base64_to_decimal, find_keysize, single_byte_xor_ciphers};
+use super::{find_keysize, single_byte_xor_ciphers};
+use crate::set_1_basics::base64_to_decimal;
 
 pub fn get_cipher(all_lines: &str) -> Vec<char> {
     let keysize = find_keysize(all_lines);
@@ -23,11 +24,11 @@ pub fn get_cipher(all_lines: &str) -> Vec<char> {
 #[cfg(test)]
 mod tests_get_cipher {
     use super::*;
-    use crate::set_1_basics::break_repeating_key_xor::get_lines;
+    use crate::set_1_basics::get_lines;
 
     #[test]
     fn test_case_1() {
-        let all_lines = get_lines();
+        let all_lines = get_lines("src/set_1_basics/6.txt");
         let cipher = get_cipher(&all_lines);
         assert_eq!(
             cipher,
