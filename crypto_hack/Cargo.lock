@@ -3,5 +3,14 @@
 version = 3
 
 [[package]]
+name = "base64"
+version = "0.21.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3f1e31e207a6b8fb791a38ea3105e6cb541f55e4d029902d3039a4ad07cc4105"
+
+[[package]]
 name = "crypto_hack"
 version = "0.1.0"
+dependencies = [
+ "base64",
+]
