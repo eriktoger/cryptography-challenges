@@ -1,15 +1,4 @@
-fn hex_to_decimal(bytes: &[char]) -> u8 {
-    u8::from_str_radix(&bytes.iter().collect::<String>(), 16).unwrap()
-}
-
-pub fn hex_to_decimals(input: &str) -> Vec<u8> {
-    input
-        .chars()
-        .collect::<Vec<_>>()
-        .chunks(2)
-        .map(hex_to_decimal)
-        .collect()
-}
+use crate::common::hex_to_decimals;
 
 pub fn xor_properties() -> String {
     let key_1 = hex_to_decimals("a6c8b6733c9b22de7bc0253266a3867df55acde8635e19c73313");
