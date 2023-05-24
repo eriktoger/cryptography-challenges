@@ -5,5 +5,6 @@ pub mod entry_cipher;
 pub mod favorite_byte;
 pub mod great_snakes;
 pub mod hex_to_text;
+pub mod know_xor;
 pub mod xor_properties;
 pub mod xor_starter;
