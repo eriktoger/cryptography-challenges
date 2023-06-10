@@ -1,4 +1,5 @@
 mod add;
+mod division;
 mod multiply;
 mod subtract;
 mod transform;
@@ -6,7 +7,7 @@ mod transform;
 pub struct BigInt {
     value: Vec<i32>,
     is_negative: bool,
-    rest: i32,
+    rest: Vec<i32>,
 }
 
 impl BigInt {
@@ -14,7 +15,7 @@ impl BigInt {
         BigInt {
             value: vec![0],
             is_negative: false,
-            rest: 0,
+            rest: vec![0],
         }
     }
 }

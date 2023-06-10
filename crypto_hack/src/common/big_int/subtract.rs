@@ -6,7 +6,7 @@ impl BigInt {
             let new_bi = BigInt {
                 value: bi.value.clone(),
                 is_negative: false,
-                rest: 0,
+                rest: vec![0],
             };
             return self.add(&new_bi);
         }
@@ -15,13 +15,22 @@ impl BigInt {
             let new_bi = BigInt {
                 value: self.value.clone(),
                 is_negative: false,
-                rest: 0,
+                rest: vec![0],
             };
 
             return BigInt {
                 value: new_bi.add(&bi).value,
                 is_negative: true,
-                rest: 0,
+                rest: vec![0],
+            };
+        }
+
+        //le, gt, eq should be functions in a file called compares.rs
+        if self.value.len() <= bi.value.len() && self.to_string() < bi.to_string() {
+            return BigInt {
+                value: bi.subtract(&self).value,
+                is_negative: true,
+                rest: vec![0],
             };
         }
 
@@ -62,7 +71,7 @@ impl BigInt {
         BigInt {
             value: new_value,
             is_negative,
-            rest: 0,
+            rest: vec![0],
         }
     }
 }
@@ -86,6 +95,14 @@ mod tests_big_int_multiply {
         let bi_2 = BigInt::from_str("100");
         let answer = bi_1.subtract(&bi_2);
         assert_eq!(answer.to_string(), "-50");
+    }
+
+    #[test]
+    fn test_case_subtract_2b() {
+        let bi_1 = BigInt::from_str("11");
+        let bi_2 = BigInt::from_str("44");
+        let answer = bi_1.subtract(&bi_2);
+        assert_eq!(answer.to_string(), "-33");
     }
 
     // -a--b -> b-a

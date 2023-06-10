@@ -15,7 +15,7 @@ impl BigInt {
         let mut bi = BigInt {
             value: vec![],
             is_negative: false,
-            rest: 0,
+            rest: vec![0],
         };
 
         //should check that it is only integers, and no leading zeros
@@ -49,7 +49,7 @@ impl BigInt {
         Some(BigInt {
             value,
             is_negative,
-            rest: 0,
+            rest: vec![0],
         })
     }
 }

@@ -22,7 +22,7 @@ impl BigInt {
         return BigInt {
             value: result,
             is_negative,
-            rest: 0,
+            rest: vec![0],
         };
     }
 
@@ -63,25 +63,25 @@ impl BigInt {
         let b1 = BigInt {
             value: low_self.to_vec(),
             is_negative: false,
-            rest: 0,
+            rest: vec![0],
         };
 
         let b2 = BigInt {
             value: low_other.to_vec(),
             is_negative: false,
-            rest: 0,
+            rest: vec![0],
         };
         let z0 = b1.multiply(&b2);
 
         let b5 = BigInt {
             value: high_self.to_vec(),
             is_negative: false,
-            rest: 0,
+            rest: vec![0],
         };
         let b6 = BigInt {
             value: high_other.to_vec(),
             is_negative: false,
-            rest: 0,
+            rest: vec![0],
         };
 
         let z2 = b5.multiply(&b6);
@@ -105,12 +105,12 @@ impl BigInt {
         let r1 = BigInt {
             value: appended_z2,
             is_negative: false,
-            rest: 0,
+            rest: vec![0],
         };
         let r2 = BigInt {
             value: diff,
             is_negative: false,
-            rest: 0,
+            rest: vec![0],
         };
 
         let r3 = z0;
@@ -120,7 +120,7 @@ impl BigInt {
         BigInt {
             value: result.value,
             is_negative,
-            rest: 0,
+            rest: vec![0],
         }
     }
 }

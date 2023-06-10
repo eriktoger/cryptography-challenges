@@ -6,7 +6,7 @@ impl BigInt {
             let new_bi = BigInt {
                 value: self.value.clone(),
                 is_negative: false,
-                rest: 0,
+                rest: vec![0],
             };
             return bi.subtract(&new_bi);
         }
@@ -15,7 +15,7 @@ impl BigInt {
             let new_bi = BigInt {
                 value: self.value.clone(),
                 is_negative: false,
-                rest: 0,
+                rest: vec![0],
             };
             return bi.subtract(&new_bi);
         }
@@ -24,7 +24,7 @@ impl BigInt {
             let new_bi = BigInt {
                 value: bi.value.clone(),
                 is_negative: false,
-                rest: 0,
+                rest: vec![0],
             };
             return self.subtract(&new_bi);
         }
@@ -62,7 +62,7 @@ impl BigInt {
         return BigInt {
             value: new_value,
             is_negative: false,
-            rest: 0,
+            rest: vec![0],
         };
     }
 }
