@@ -26,7 +26,12 @@ impl BigInt {
             }
             bi.value.push(((c as u8) - 48).into());
         }
-        bi
+
+        bi.add(&BigInt {
+            value: vec![0],
+            is_negative: false,
+            rest: vec![0],
+        })
     }
     pub fn from_int<T: std::fmt::Display>(integer: T) -> Option<BigInt> {
         let s = integer.to_string();
@@ -88,5 +93,10 @@ mod tests_big_int_multiply {
     fn test_case_from_int_3() {
         let bi_1 = BigInt::from_int(132.3);
         assert_eq!(bi_1.is_none(), true);
+    }
+    #[test]
+    fn test_case_from_int_4() {
+        let bi_1 = BigInt::from_str("06");
+        assert_eq!(bi_1.to_string(), "6");
     }
 }
