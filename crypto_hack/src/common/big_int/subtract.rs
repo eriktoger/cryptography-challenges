@@ -26,7 +26,7 @@ impl BigInt {
         }
 
         //le, gt, eq should be functions in a file called compares.rs
-        if self.value.len() <= bi.value.len() && self.to_string() < bi.to_string() {
+        if bi.greater_than(self) {
             return BigInt {
                 value: bi.subtract(&self).value,
                 is_negative: true,
@@ -103,6 +103,13 @@ mod tests_big_int_multiply {
         let bi_2 = BigInt::from_str("44");
         let answer = bi_1.subtract(&bi_2);
         assert_eq!(answer.to_string(), "-33");
+    }
+    #[test]
+    fn test_case_subtract_2c() {
+        let bi_1 = BigInt::from_str("6");
+        let bi_2 = BigInt::from_str("13");
+        let answer = bi_1.subtract(&bi_2);
+        assert_eq!(answer.to_string(), "-7");
     }
 
     // -a--b -> b-a
