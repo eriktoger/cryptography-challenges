@@ -53,11 +53,22 @@ impl BigInt {
                 let temp = bi.slow_division(other);
                 answer += &temp.to_string(); //this should only be one digit
                 rest = temp.rest;
-
                 current = String::new();
             } else {
                 answer += "0";
+                rest.push(0);
             }
+        }
+
+        if current != "" && rest != vec![0] {
+            let bi_rest = BigInt {
+                value: rest,
+                is_negative: false,
+                rest: vec![0],
+            };
+            rest = bi_rest.add(&BigInt::from_str(&current)).value;
+        } else if current != "" {
+            rest = BigInt::from_str(&current).value;
         }
         BigInt {
             value: BigInt::from_str(&answer).value,
@@ -110,5 +121,37 @@ mod tests_big_int_division {
         let answer = bi_1.division(&bi_2);
         assert_eq!(answer.to_string(), "50762017587269945242704287835542630894379482594530082242192845400733083678333518338966499444862738291210869394250369369251567178079098623736925136782674624786933625640126782349469884350244700980383503858206966425919468820940078631968492977440828944748791742767763806789228814199586985905270835419271654579569");
         assert_eq!(answer.rest, vec![1]);
+    }
+    #[test]
+    fn test_case_division_6() {
+        let bi_1 = BigInt::from_str("32");
+        let bi_2 = BigInt::from_str("13");
+        let answer = bi_1.division(&bi_2);
+        assert_eq!(answer.to_string(), "2");
+        assert_eq!(answer.rest, vec![6]);
+    }
+    #[test]
+    fn test_case_division_7() {
+        let bi_1 = BigInt::from_str("2");
+        let bi_2 = BigInt::from_str("13");
+        let answer = bi_1.division(&bi_2);
+        assert_eq!(answer.to_string(), "0");
+        assert_eq!(answer.rest, vec![2]);
+    }
+    #[test]
+    fn test_case_division_8() {
+        let bi_1 = BigInt::from_str("20563920");
+        let bi_2 = BigInt::from_str("47");
+        let answer = bi_1.division(&bi_2);
+        assert_eq!(answer.to_string(), "437530");
+        assert_eq!(answer.rest, vec![1, 0]);
+    }
+    #[test]
+    fn test_case_division_9() {
+        let bi_1 = BigInt::from_str("436087428994288740597760");
+        let bi_2 = BigInt::from_str("47");
+        let answer = bi_1.division(&bi_2);
+        assert_eq!(answer.to_string(), "9278455936048696608462");
+        assert_eq!(answer.rest, vec![4, 6]);
     }
 }
