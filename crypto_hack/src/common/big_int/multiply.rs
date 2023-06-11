@@ -48,7 +48,7 @@ impl BigInt {
 
         while bi_value.len() < size {
             let mut v = vec![0];
-            v.extend(s_value.iter());
+            v.extend(bi_value.iter());
             bi_value = v;
         }
 
@@ -222,5 +222,20 @@ mod tests_big_int_multiply {
         let bi_2 = BigInt::from_str("2");
         let answer = bi_1.multiply(&bi_2);
         assert_eq!(answer.to_string(), "101524035174539890485408575671085261788758965189060164484385690801466167356667036677932998889725476582421738788500738738503134356158197247473850273565349249573867251280253564698939768700489401960767007716413932851838937641880157263936985954881657889497583485535527613578457628399173971810541670838543309159138");
+    }
+
+    #[test]
+    fn test_case_mulitply_11() {
+        let bi_1 = BigInt::from_str("133");
+        let bi_2 = BigInt::from_str("39");
+        let answer = bi_1.multiply(&bi_2);
+        assert_eq!(answer.to_string(), "5187");
+    }
+    #[test]
+    fn test_case_mulitply_12() {
+        let bi_1 = BigInt::from_str("39");
+        let bi_2 = BigInt::from_str("133");
+        let answer = bi_1.multiply(&bi_2);
+        assert_eq!(answer.to_string(), "5187");
     }
 }
