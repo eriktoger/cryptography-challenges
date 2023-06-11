@@ -2,6 +2,7 @@ mod add;
 mod compares;
 mod division;
 mod multiply;
+mod pow_mod;
 mod subtract;
 mod transform;
 
